@@ -1,4 +1,3 @@
-import React from "react";
 import "../Content/content.css";
 
 import { AiOutlineCopy } from "react-icons/ai";

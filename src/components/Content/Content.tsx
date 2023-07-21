@@ -4,8 +4,18 @@ import { TfiReload } from "react-icons/tfi";
 import { useEffect, useState } from "react";
 import editor5 from "../../data/editor5.json";
 
+function shuffleArray(array) {
+  // Fisher-Yates (Knuth) Shuffle Algorithm
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 function Content() {
   const [current, setCurrent] = useState<number[]>([]);
+  const [shuffledEditor, setShuffledEditor] = useState(editor5);
 
   const toggleSelection = (index: number) => {
     if (current.includes(index)) {
@@ -15,14 +25,29 @@ function Content() {
     }
   };
 
-  useEffect(() => {
-  }, [current]);
+  const handleGenerate = () => {
+    // Shuffle the editor5 array
+    const shuffledArray = shuffleArray([...editor5]);
+    setShuffledEditor(shuffledArray);
+  };
+
+  const copyText = (text: string) => {
+    try {
+      navigator.clipboard.writeText(text);
+      // Success message or other actions if needed
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+      // Handle error or provide alternative method for copying
+    }
+  };
+
+  useEffect(() => {}, [current]);
 
   return (
     <div className="app__content">
       <div className="content">
         <div className="content__">
-          {editor5.map((item, index) => (
+          {shuffledEditor.map((item, index) => (
             <div
               className={`content__detail ${
                 current.includes(index) ? "__background" : ""
@@ -36,16 +61,25 @@ function Content() {
                 <div>
                   <TfiReload size="24" />
                 </div>
-                <div onClick={() => toggleSelection(index)}>
-                  {" "}
-                  <AiOutlineCopy size="25" color="#871787" />
+                <div>
+                  <AiOutlineCopy
+                    size="25"
+                    color="#871787"
+                    onClick={(e) => {
+                      toggleSelection(index);
+                      e.stopPropagation();
+                      copyText(item.script);
+                    }}
+                  />
                 </div>
               </span>
             </div>
           ))}
         </div>
         <div className="generate__">
-          <button className="button__generate">Generate</button>
+          <button className="button__generate" onClick={() => handleGenerate()}>
+            Generate
+          </button>
         </div>
       </div>
     </div>

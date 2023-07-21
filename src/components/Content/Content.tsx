@@ -4,7 +4,7 @@ import { TfiReload } from "react-icons/tfi";
 import { useEffect, useState } from "react";
 import editor5 from "../../data/editor5.json";
 
-function shuffleArray(array) {
+function shuffleArray<T>(array: T[]): T[] {
   // Fisher-Yates (Knuth) Shuffle Algorithm
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -65,7 +65,7 @@ function Content() {
                   <AiOutlineCopy
                     size="25"
                     color="#871787"
-                    onClick={(e) => {
+                    onClick={(e:MouseEvent) => {
                       toggleSelection(index);
                       e.stopPropagation();
                       copyText(item.script);

@@ -1,0 +1,17 @@
+.app__header {
+  display: flex;
+  height: 40px;
+  background-color: rgb(102, 184, 157);
+}
+
+button {
+  padding: 6px 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  align-items: center;
+  margin: auto;
+}

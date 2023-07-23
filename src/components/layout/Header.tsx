@@ -1,6 +1,7 @@
 import "../styles/style.css";
-
+import { useState } from "react";
 function Header(props) {
+  const [active, setActive] = useState();
   const {
     editor1,
     editor2,
@@ -10,19 +11,25 @@ function Header(props) {
     setSelectedEditorValue,
   } = props;
 
-  const editorFn = async (editorFn) => {
+  const editorFn = async (editorFn, index) => {
     const scripts = await editorFn();
     setSelectedEditorValue(scripts);
+    setActive(index);
   };
+
+  const data = [editor1, editor2, editor3, editor4,editor5];
 
   return (
     <div className="app__header">
       <div className="header">
-        <button onClick={() => editorFn(editor1)}> Editor [ 1 ]</button>
-        <button onClick={() => editorFn(editor2)}> Editor [ 2 ]</button>
-        <button onClick={() => editorFn(editor3)}> Editor [ 3 ]</button>
-        <button onClick={() => editorFn(editor4)}> Editor [ 4 ]</button>
-        <button onClick={() => editorFn(editor5)}> Editor [ 5 ]</button>
+        {data.map((item, index) => (
+          <button
+            className={`${active === index ? "__active" : ""}`}
+            onClick={() => editorFn(item, index)}
+          >
+            Editor [ {index + 1} ]
+          </button>
+        ))}
       </div>
     </div>
   );

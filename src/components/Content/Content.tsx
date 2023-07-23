@@ -58,10 +58,9 @@ function Content(props) {
                 current.includes(index) ? "__background" : ""
               }`}
               key={index}
-
               onClick={() => {
                 toggleSelection(index);
-       
+
                 copyText(item);
               }}
             >

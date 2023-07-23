@@ -21,3 +21,8 @@ button {
   font-size: 15px;
   font-weight: bold;
 }
+
+.__active {
+  background-color: rgb(130, 130, 192);
+  color: white;
+}

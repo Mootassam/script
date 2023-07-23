@@ -59,6 +59,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+
+}
+
+.content__detail:hover{ 
+  background-color: rgb(147, 203, 203);
 }
 
 .copy__ {

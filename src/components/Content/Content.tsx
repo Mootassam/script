@@ -18,7 +18,6 @@ function Content(props) {
   const [current, setCurrent] = useState<number[]>([]);
   const [shuffledEditor, setShuffledEditor] = useState(selectedEditorValue);
 
-
   const toggleSelection = (index: number) => {
     if (current.includes(index)) {
       setCurrent((prev) => prev.filter((item) => item !== index));
@@ -26,7 +25,6 @@ function Content(props) {
       setCurrent((prev) => [...prev, index]);
     }
   };
-
 
   const handleGenerate = () => {
     // Shuffle the editor values
@@ -44,11 +42,7 @@ function Content(props) {
     }
   };
 
-
-  useEffect(() => {
-
-  }, [current]);
-
+  useEffect(() => {}, [current]);
 
   useEffect(() => {
     // Update the shuffledEditor state when selectedEditorValue changes
@@ -64,25 +58,27 @@ function Content(props) {
                 current.includes(index) ? "__background" : ""
               }`}
               key={index}
+
+              onClick={() => {
+                toggleSelection(index);
+       
+                copyText(item);
+              }}
             >
               <span className="">
                 {index + 1}) {item}
               </span>
               <span className="copy__">
-                <div>
+                {/* <div>
                   <TfiReload size="24" />
                 </div>
                 <div>
                   <AiOutlineCopy
                     size="25"
                     color="#871787"
-                    onClick={(e: MouseEvent) => {
-                      toggleSelection(index);
-                      e.stopPropagation();
-                      copyText(item);
-                    }}
+               
                   />
-                </div>
+                </div> */}
               </span>
             </div>
           ))}

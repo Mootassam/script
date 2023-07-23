@@ -1,6 +1,5 @@
 import "../Content/content.css";
-import { AiOutlineCopy } from "react-icons/ai";
-import { TfiReload } from "react-icons/tfi";
+
 import { useEffect, useState } from "react";
 
 function shuffleArray<T>(array: T[]): T[] {

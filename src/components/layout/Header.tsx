@@ -17,7 +17,7 @@ function Header(props) {
     setActive(index);
   };
 
-  const data = [editor1, editor2, editor3, editor4,editor5];
+  const data = [editor1, editor2, editor3, editor4, editor5];
 
   return (
     <div className="app__header">

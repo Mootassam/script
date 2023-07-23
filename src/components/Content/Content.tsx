@@ -2,7 +2,6 @@ import "../Content/content.css";
 import { AiOutlineCopy } from "react-icons/ai";
 import { TfiReload } from "react-icons/tfi";
 import { useEffect, useState } from "react";
-import editor5 from "../../data/editor5.json";
 
 function shuffleArray<T>(array: T[]): T[] {
   // Fisher-Yates (Knuth) Shuffle Algorithm
@@ -13,9 +12,12 @@ function shuffleArray<T>(array: T[]): T[] {
   return array;
 }
 
-function Content() {
+function Content(props) {
+  const { selectedEditorValue } = props;
+
   const [current, setCurrent] = useState<number[]>([]);
-  const [shuffledEditor, setShuffledEditor] = useState(editor5);
+  const [shuffledEditor, setShuffledEditor] = useState(selectedEditorValue);
+
 
   const toggleSelection = (index: number) => {
     if (current.includes(index)) {
@@ -25,9 +27,10 @@ function Content() {
     }
   };
 
+
   const handleGenerate = () => {
-    // Shuffle the editor5 array
-    const shuffledArray = shuffleArray([...editor5]);
+    // Shuffle the editor values
+    const shuffledArray = shuffleArray([...selectedEditorValue]);
     setShuffledEditor(shuffledArray);
   };
 
@@ -41,8 +44,16 @@ function Content() {
     }
   };
 
-  useEffect(() => {}, [current]);
 
+  useEffect(() => {
+
+  }, [current]);
+
+
+  useEffect(() => {
+    // Update the shuffledEditor state when selectedEditorValue changes
+    setShuffledEditor(selectedEditorValue);
+  }, [selectedEditorValue]);
   return (
     <div className="app__content">
       <div className="content">
@@ -55,7 +66,7 @@ function Content() {
               key={index}
             >
               <span className="">
-                {index + 1}) {item.script}
+                {index + 1}) {item}
               </span>
               <span className="copy__">
                 <div>
@@ -65,7 +76,7 @@ function Content() {
                   <AiOutlineCopy
                     size="25"
                     color="#871787"
-                    onClick={(e:MouseEvent) => {
+                    onClick={(e: MouseEvent) => {
                       toggleSelection(index);
                       e.stopPropagation();
                       copyText(item.script);

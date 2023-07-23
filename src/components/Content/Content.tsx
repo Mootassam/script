@@ -79,7 +79,7 @@ function Content(props) {
                     onClick={(e: MouseEvent) => {
                       toggleSelection(index);
                       e.stopPropagation();
-                      copyText(item.script);
+                      copyText(item);
                     }}
                   />
                 </div>

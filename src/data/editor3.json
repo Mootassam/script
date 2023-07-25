@@ -1,4 +1,5 @@
-[{
+[
+  {
     "script": "I am ready to invest 5 thousand."
   },
   {
@@ -22,7 +23,6 @@
     "script": "I have 99 thousand bank balance."
   },
 
-
   {
     "script": "I am ready to task payment."
   },
@@ -33,7 +33,6 @@
   {
     "script": "I am so excited."
   },
-
 
   {
     "script": "If I send you 5000 rupees."
@@ -65,6 +64,4 @@
   {
     "script": " Going to pay deposit."
   }
-
-
 ]

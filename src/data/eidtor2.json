@@ -1,4 +1,5 @@
-[{
+[
+  {
     "script": "i like to do 2000"
   },
   {
@@ -161,7 +162,7 @@
   {
     "script": "15k is i have now so i can't miss this chance "
   },
-  
+
   {
     "script": "I can transfer 9000 now please sure my spot"
   },
@@ -182,10 +183,35 @@
   },
   {
     "script": "Mam please book 30000"
+  },
+  {
+    "script": "Sorry for late confirmation any 5000 quota avilable "
+  },
+  {
+    "script": "Please Help me to reserve 9000 quota @ task manager  "
+  },
+  {
+    "script": "I going to do 15000 No preasure guys "
+  },
+  {
+    "script": "30000 i think i can do now  "
+  },
+  {
+    "script": "i can do 5000 for this time  "
+  },
+  {
+    "script": "9000 for begning "
+  },
+  {
+    "script": "Hard to choose which one is good for me. Let me contact my receptionist and I will be back "
+  },
+  {
+    "script": "Can i join with 15000 for on going task  "
+  },
+  {
+    "script": "suppose to transfer 30000"
+  },
+  {
+    "script": "My bank balance is ok do 9000"
   }
-
-
-
-
-
 ]
